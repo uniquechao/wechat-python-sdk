@@ -763,6 +763,23 @@ class WechatBasic(WechatBase):
             }
         )
 
+
+   def create_short_url(self,long_url):
+        """
+        获取短链接
+        详情参考：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1443433600&token=&lang=zh_CN
+        :param long_url:需要转换的长链接
+        :return: 返回的 JSON 数据包
+        """
+        return self.request.post(
+            url= 'https://api.weixin.qq.com/cgi-bin/shorturl',
+            data={
+                    'action': 'long2short',
+                    'long_url': long_url
+                }
+        )
+
+
     def set_template_industry(self, industry_id1, industry_id2):
         """
         设置所属行业
